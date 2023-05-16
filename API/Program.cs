@@ -1,8 +1,17 @@
+using System.Text;
 using API.Data;
+using API.Extensions;
+using API.Interfaces;
+using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+var key = builder.Configuration["TokenKey"]; 
+
 builder.Services.AddCors();
+builder.AddIdentityServices(key);
 
 // Add services to the container.
 
@@ -11,8 +20,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Add dbContext, here you can we are using In-memory database.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(connectionString));
+
+builder.AddApplicationServices();
 
 var app = builder.Build();
 
@@ -34,6 +43,7 @@ app.UseCors(builder =>
         .AllowAnyHeader();
 });
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
