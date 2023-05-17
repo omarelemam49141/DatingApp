@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 
@@ -8,16 +8,17 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./nav.component.css']
 })
 
-export class NavComponent {
+export class NavComponent implements OnInit{
   isCollapsed = true;
-  isLogged: boolean = false;
 
-  constructor(private accountService: AccountService) {}
+  constructor(public accountService: AccountService) {}
+
+  ngOnInit(): void {
+  }
 
   login(form:NgForm) {
     this.accountService.login(form.value).subscribe({
       next: (res) => {
-        this.isLogged = true;
       },
       error: (err) => {
         console.log(err);
@@ -26,6 +27,6 @@ export class NavComponent {
   }
 
   logout() {
-    this.isLogged = false;
+    this.accountService.logout();
   }
 }
