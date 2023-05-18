@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +13,7 @@ import { AccountService } from '../_services/account.service';
 export class NavComponent implements OnInit{
   isCollapsed = true;
 
-  constructor(public accountService: AccountService) {}
+  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
   }
@@ -19,14 +21,17 @@ export class NavComponent implements OnInit{
   login(form:NgForm) {
     this.accountService.login(form.value).subscribe({
       next: (res) => {
+        this.router.navigateByUrl('/members');
       },
       error: (err) => {
         console.log(err);
+        this.toastr.error(err.error);
       }
     })
   }
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 }
