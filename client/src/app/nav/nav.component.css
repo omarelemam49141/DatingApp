@@ -1,3 +1,83 @@
+.container {
+    margin-top: 0;
+}
+
 .dropdown-item {
     cursor: pointer;
+}
+
+.navbar-brand {
+    position: relative;
+}
+
+.navbar-brand:hover .logo {
+    opacity: 0.5;
+}
+
+.logo {
+    width: 75px;
+    position: absolute;
+    top: 51%;
+    opacity: 0.4;
+    transform: translateY(-50%);
+    transition: opacity 0.2s;
+
+}
+
+/* heart beat animation */
+.logo {
+    -webkit-animation: beat .25s infinite alternate;
+    -moz-animation: beat .25s infinite alternate;
+    -ms-animation: beat .25s infinite alternate;
+    -o-animation: beat .25s infinite alternate;
+    animation: beat .25s infinite alternate;
+
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -o-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+
+
+@keyframes beat {
+    to {
+        -webkit-transform: scale(1.1) translateY(-50%);
+        -moz-transform: scale(1.1) translateY(-50%);
+        -o-transform: scale(1.1) translateY(-50%);
+        -ms-transform: scale(1.1) translateY(-50%);
+        transform: scale(1.1) translateY(-50%);
+    }
+
+}
+
+@-moz-keyframes beat {
+    to {
+        -moz-transform: scale(1.1) translateY(-50%);
+        transform: scale(1.1) translateY(-50%);
+    }
+
+}
+
+@-webkit-keyframes beat {
+    to {
+        -webkit-transform: scale(1.1) translateY(-50%);
+        transform: scale(1.1) translateY(-50%);
+    }
+
+}
+
+@-ms-keyframes beat {
+    to {
+        -ms-transform: scale(1.1) translateY(-50%);
+        transform: scale(1.1) translateY(-50%);
+    }
+
+}
+
+@-o-keyframes beat {
+    to {
+        -o-transform: scale(1.1) translateY(-50%);
+        transform: scale(1.1) translateY(-50%);
+    }
 }

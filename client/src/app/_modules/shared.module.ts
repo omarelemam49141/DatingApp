@@ -21,7 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
       positionClass: 'toast-bottom-right'
     })
   ],
-
+  
   exports: [
     BrowserAnimationsModule,
     BrowserAnimationsModule,

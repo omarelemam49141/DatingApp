@@ -1,13 +1,32 @@
-<div class="text-center" *ngIf="!registerMode">
-    <h1>Find Your Match</h1>
-    <p class="lead mb-4" style="font-weight: 500;">Come on in to find your matches... all you need to do is sign up!</p>
-    <button class="btn btn-primary btn-lg" (click)="toggleRegister()">Register</button>
-    <button class="btn btn-info btn-lg ms-2" style="color: white;">Learn more</button>
-</div>
-
-<div class="text-center row justify-content-center" *ngIf="registerMode">
-    <div class="col-4">
-        <app-register (cancelRegisterFromChild)="cancelRegister($event)"></app-register>
+<div class="context row justify-content-center">
+    <div class="container text-center">
+        <div class="text-center" *ngIf="!registerMode">
+            <h1>Find Your Match</h1>
+            <p class="lead mb-4" style="font-weight: 500;">Come on in to find your matches... all you need to do is sign up!</p>
+            <button class="btn btn-primary btn-lg" (click)="toggleRegister()">Register</button>
+            <button class="btn btn-info btn-lg ms-2" style="color: white;">Learn more</button>
+        </div>
+        
+        <div class="col-10 col-md-6 col-lg-4 m-auto" *ngIf="registerMode">
+            <app-register (cancelRegisterFromChild)="cancelRegister($event)"></app-register>
+        </div>
     </div>
 </div>
+
+<div class="area" >
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+</div >
+
+
 
