@@ -1,1 +1,55 @@
-<p>member-details works!</p>
+<div class="container" *ngIf="member">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-4">
+            <div class="card me-sm-3">
+                <div class="image-container">
+                    <img src="{{member.mainPhotoUrl || '../../../assets/user.png'}}" class="card-img-top img-thumbnail" alt="{{member.knownAs}}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Location:</h5>
+                    <p class="card-text">{{member.city}}, {{member.country}}</p>
+
+                    <h5 class="card-title">Age:</h5>
+                    <p class="card-text">{{member.age}}</p>
+
+                    <h5 class="card-title">LastActive:</h5>
+                    <p class="card-text">{{member.lastActive}}</p>
+
+                    <h5 class="card-title">Member since:</h5>
+                    <p class="card-text">{{member.created}}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group w-100">
+                        <button class="btn btn-primary">Like</button>
+                        <button class="btn btn-success">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details col-12 col-sm-12 col-md-7 col-lg-8">
+            <tabset class="member-tabset">
+                <tab heading="About {{member.knownAs}}">
+                    <div class="about">
+                        <h4>Description</h4>
+                        <p class="lead">{{member.introduction}}</p>
+                    </div>
+                    <div class="about">
+                        <h4>Looking for</h4>
+                        <p class="lead">{{member.lookingFor}}</p>
+                    </div>
+                </tab>
+                <tab heading="Interests">
+                    <p class="lead">{{member.interests}}</p>
+                </tab>
+                <tab heading="Photos">
+                    <gallery [items]="items" thumbPosition="bottom" currIndex=0
+                    isActive="isActive"></gallery>
+                </tab>
+                <tab heading="Message">
+                    <p>Messages go here</p>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

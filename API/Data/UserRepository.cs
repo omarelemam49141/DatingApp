@@ -41,6 +41,11 @@ namespace API.Data
             .SingleOrDefaultAsync();
         }
 
+        public async Task<AppUser> GetAppUserByUsernameAsync(string username)
+        {
+            return await _context.Users.SingleOrDefaultAsync(x => x.UserName == username);
+        }
+
         public async Task<bool> SaveAllAsync()
         {
             return await _context.SaveChangesAsync() > 0;

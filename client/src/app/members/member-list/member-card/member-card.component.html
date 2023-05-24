@@ -1,0 +1,14 @@
+<div class="card mb-4">
+    <div class="img-container d-flex justify-content-center">
+        <img src="{{member.mainPhotoUrl || '../../../assets/user.png'}}" class="card-img-top" alt="{{member.knownAs}}">
+        <ul class="user-btns d-flex list-unstyled flex-row text-center justify-content-center align-items-center">
+            <li class="me-1"><button class="btn btn-primary" routerLink="/members/{{member.userName}}"><i class="fa fa-user"></i></button></li>
+            <li class="me-1"><button class="btn btn-primary"><i class="fa fa-heart"></i></button></li>
+            <li><button class="btn btn-primary"><i class="fa fa-envelope"></i></button></li>
+        </ul>
+    </div>
+    <div class="card-body text-center">
+        <p class="card-text mb-1"><i class="fa fa-user me-2"></i>{{member.knownAs}}</p>
+        <p class="card-text text-muted">{{member.city}}</p>
+    </div>
+</div>

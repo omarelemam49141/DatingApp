@@ -8,6 +8,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth/auth.guard';
 import { ErrorsComponent } from './_errors/errors/errors.component';
 import { NotFoundComponent } from './_errors/not-found/not-found.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { unsavedDataGuardGuard } from './_guards/unsaved-data-guard.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,7 +19,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: 'members', component: MemberListComponent},
-      {path: 'members/:id', component: MemberDetailsComponent},
+      {path: 'member/edit', component: MemberEditComponent, canDeactivate: [unsavedDataGuardGuard]},
+      {path: 'members/:username', component: MemberDetailsComponent},
       {path: 'lists', component: ListsComponent},
       {path: 'messages', component: MessagesComponent}
     ]

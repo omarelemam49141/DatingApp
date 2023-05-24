@@ -1,0 +1,11 @@
+.container {
+    margin-top: 100px;
+}
+
+.image-container {
+    padding: 20px;
+}
+
+.g-active-item {
+    --g-item-height: 100% !important;
+}

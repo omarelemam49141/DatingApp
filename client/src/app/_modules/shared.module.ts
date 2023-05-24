@@ -5,30 +5,42 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { GalleryModule } from  'ng-gallery';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    BrowserAnimationsModule,
     CollapseModule.forRoot(),
     FormsModule,
     BsDropdownModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    TabsModule.forRoot(),
+    GalleryModule.withConfig({
+      dots: true,
+      imageSize: 'contain',
+      loadingAttr: 'lazy',
+      loadingStrategy: 'preload',
+      autoPlay: true,
+      nav: true
+    }),
+    NgxSpinnerModule
   ],
   
   exports: [
     BrowserAnimationsModule,
-    BrowserAnimationsModule,
     CollapseModule,
     FormsModule,
     BsDropdownModule,
-    ToastrModule
+    ToastrModule,
+    TabsModule,
+    GalleryModule,
+    NgxSpinnerModule
   ]
 })
 export class SharedModule { }

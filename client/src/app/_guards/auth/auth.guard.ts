@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import { AccountService } from 'src/app/_services/account.service';
+import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router, UrlTree } from '@angular/router';
 
@@ -9,7 +8,7 @@ import { Router, UrlTree } from '@angular/router';
 })
 export class AuthGuard {
 
-  constructor(private accountService: AccountService, private toastr: ToastrService, private route: Router) { }
+  constructor(private toastr: ToastrService, private route: Router) { }
   canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>

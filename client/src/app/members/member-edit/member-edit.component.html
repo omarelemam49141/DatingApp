@@ -1,0 +1,85 @@
+<div class="container" *ngIf="member">
+    <div class="row">
+        <div class="col-12 col-md-5 col-lg-4">
+            <h1>Your Profile</h1>
+        </div>
+
+        <div class="col-12 col-md-7 col-lg-8">
+            <p class="alert alert-info" *ngIf="updateForm.dirty"><strong>Information: </strong>You have made changes. Any unsaved changes will be
+                lost.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-5 col-lg-4">
+            <div class="card me-sm-3">
+                <div class="image-container">
+                    <img src="{{member.mainPhotoUrl || '../../../assets/user.png'}}" class="card-img-top img-thumbnail"
+                        alt="{{member.knownAs}}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Location:</h5>
+                    <p class="card-text">{{member.city}}, {{member.country}}</p>
+
+                    <h5 class="card-title">Age:</h5>
+                    <p class="card-text">{{member.age}}</p>
+
+                    <h5 class="card-title">LastActive:</h5>
+                    <p class="card-text">{{member.lastActive}}</p>
+
+                    <h5 class="card-title">Member since:</h5>
+                    <p class="card-text">{{member.created}}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group w-100">
+                        <button class="btn btn-success" form="updateForm" [disabled]="!updateForm.dirty">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details col-12 col-sm-12 col-md-7 col-lg-8">
+            <form #updateForm="ngForm" id="updateForm" (ngSubmit)="updateMember()">
+                <tabset class="member-tabset">
+                    <tab heading="About {{member.userName}}">
+                        <div class="about mb-3">
+                            <h4>Description</h4>
+                            <textarea name="introduction" rows="6" class="form-control"
+                                [(ngModel)]="member.introduction"></textarea>
+                        </div>
+                        <div class="about mb-3">
+                            <h4>Looking for</h4>
+                            <textarea name="lookingFor" rows="6" class="form-control"
+                                [(ngModel)]="member.lookingFor"></textarea>
+                        </div>
+                        <div class="about mb-3">
+                            <h4>Interests</h4>
+                            <textarea name="interests" rows="6" class="form-control"
+                                [(ngModel)]="member.interests"></textarea>
+                        </div>
+                        <div class="about mb-3">
+                            <h4>Location details</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="city" class="col-3">City: </label>
+                                    <input type="text" name="knownAs" id="city" [(ngModel)]="member.city"
+                                    class="form-control d-inline">
+                                </div>
+
+                                <div class="col">
+                                    <label for="country">Country: </label>
+                                    <input type="text" name="country" [(ngModel)]="member.country"
+                                        class="form-control d-inline">
+                                </div>
+                            </div>
+
+                        </div>
+                    </tab>
+                    <tab heading="Photos">
+                        <p>Photos go here</p>
+                    </tab>
+                </tabset>
+            </form>
+        </div>
+    </div>
+</div>
