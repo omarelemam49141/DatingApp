@@ -43,7 +43,7 @@ namespace API.Data
 
         public async Task<AppUser> GetAppUserByUsernameAsync(string username)
         {
-            return await _context.Users.SingleOrDefaultAsync(x => x.UserName == username);
+            return await _context.Users.Include(p => p.Photos).SingleOrDefaultAsync(x => x.UserName == username);
         }
 
         public async Task<bool> SaveAllAsync()
@@ -53,7 +53,7 @@ namespace API.Data
 
         public void Update(AppUser user)
         {
-            _context.Users.Entry(user).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
         }
     }
 }

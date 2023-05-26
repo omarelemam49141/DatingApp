@@ -81,3 +81,9 @@
         transform: scale(1.1) translateY(-50%);
     }
 }
+
+.user-photo {
+    max-height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+}

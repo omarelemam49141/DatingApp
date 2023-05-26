@@ -16,8 +16,7 @@ export class AccountService {
   login(loginModel: any) {
     return this.http.post(this.baseUrl + 'account/login', loginModel).pipe(
       map ((res) => {
-        localStorage.setItem('user', JSON.stringify(res));
-        this.userEvent.next(res);
+        this.emmitingUser(res);
       })
     );
   }
@@ -25,13 +24,13 @@ export class AccountService {
   register(registerModel: any) {
     return this.http.post(this.baseUrl + 'account/register', registerModel).pipe(
       map ((res) => {
-        localStorage.setItem('user', JSON.stringify(res));
-        this.userEvent.next(res);
+        this.emmitingUser(res);
       })
     );
   }
 
-  emmitingUser(user: User) {
+  emmitingUser(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.userEvent.next(user);
   }
 

@@ -5,7 +5,8 @@
       Dating App
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+      (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse" [collapse]="isCollapsed" [isAnimated]="true">
@@ -25,24 +26,29 @@
           <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
         </li>
       </ul>
-      <form class="d-flex ms-auto" #loginForm="ngForm" (ngSubmit)="login(loginForm)" autocomplete="off" *ngIf="(accountService.userEvent$ | async) === null">
+      <form class="d-flex ms-auto" #loginForm="ngForm" (ngSubmit)="login(loginForm)" autocomplete="off"
+        *ngIf="(accountService.userEvent$ | async) === null">
         <input class="form-control me-2" type="text" placeholder="username" name="username" ngModel>
         <input class="form-control me-2" type="password" placeholder="password" name="password" ngModel>
         <button class="btn btn-outline-success" type="submit">Login</button>
       </form>
 
-      <div class="btn-group" dropdown *ngIf="(accountService.userEvent$ | async) as user">
-        <button id="button-basic" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
-                aria-controls="dropdown-basic">
-          Welcome, {{user.username | titlecase}} <span class="caret"></span>
-        </button>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu mt-1"
-            role="menu" aria-labelledby="button-basic" 
+      <div *ngIf="(accountService.userEvent$ | async) as user">
+        <img src="{{user.photoUrl}}" alt="{{user.username}}" class="img-thumbnail user-photo">
+        <div dropdown class="btn-group">
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
+            aria-controls="dropdown-basic">
+            Welcome, {{user.username | titlecase}} <span class="caret"></span>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu mt-1" role="menu" aria-labelledby="button-basic"
             data-bs-theme="light">
             <li><a class="dropdown-item rounded-2" routerLink="/member/edit">Edit Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item rounded-2" (click)="logout()">Logout</a></li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
