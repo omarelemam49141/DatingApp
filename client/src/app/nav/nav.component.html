@@ -34,7 +34,7 @@
       </form>
 
       <div *ngIf="(accountService.userEvent$ | async) as user">
-        <img src="{{user.photoUrl}}" alt="{{user.username}}" class="img-thumbnail user-photo">
+        <img src="{{user.photoUrl || '../../../../assets/user.png'}}" alt="{{user.username}}" class="img-thumbnail user-photo">
         <div dropdown class="btn-group">
           <button id="button-basic" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
             aria-controls="dropdown-basic">
