@@ -8,25 +8,25 @@
     [formControl]="$any(ngControl.control)">
 
     <div 
-    class="invalid-feedback"
+    class="invalid-feedback text-warning"
     *ngIf="ngControl.control?.hasError('required')">
         Please enter a {{label}}
     </div>
 
     <div 
-    class="invalid-feedback"
+    class="invalid-feedback text-warning"
     *ngIf="ngControl.control?.hasError('minlength')">
         {{label}} can't be less than {{ngControl.control?.getError('minlength').requiredLength}}
     </div>
 
     <div 
-    class="invalid-feedback"
+    class="invalid-feedback text-warning"
     *ngIf="ngControl.control?.hasError('maxlength')">
         {{label}} can't be more than {{ngControl.control?.getError('maxlength').requiredLength}}
     </div>
 
     <div 
-    class="invalid-feedback"
+    class="invalid-feedback text-warning"
     *ngIf="ngControl.control?.hasError('notMatching')">
         Passwords don't match
     </div>

@@ -38,7 +38,7 @@
         <div dropdown class="btn-group">
           <button id="button-basic" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
             aria-controls="dropdown-basic">
-            Welcome, {{user.username | titlecase}} <span class="caret"></span>
+            Welcome, {{user.knownAs | titlecase}} <span class="caret"></span>
           </button>
           <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu mt-1" role="menu" aria-labelledby="button-basic"
             data-bs-theme="light">
